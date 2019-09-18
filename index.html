@@ -61,16 +61,16 @@
 		<div class="container">
 			
 			<div class="header-wrapper text-wrapper">
-				<h1><b>C</b>olumbia</h1>
-				<h1><b>C</b>reative</h1>
-				<h1><b>C</b>oders</h1>
-				<h1><b>C</b>lub</h1>
+				<h1><b>c</b>olumbia</h1>
+				<h1><b>c</b>reative</h1>
+				<h1><b>c</b>oders</h1>
+				<h1><b>c</b>lub</h1>
 			</div>
 
 			<div class="footer-wrapper text-wrapper">
-				<h1>About</h1>
-				<h1>Projects</h1>
-				<h1>Meetings</h1>
+				<h1>about</h1>
+				<h1>contact</h1>
+				<h1>meetings</h1>
 			</div>
 		</div>
 		<script>
@@ -89,6 +89,7 @@
 			var particles = [];
 
 			ctx.fillStyle="#f9f7ff";
+			// ctx.fillStyle="#bfc9e2";
 
 			for(var i=0; i<xlen; i++) {
 				for(var j=0; j<ylen; j++) {
@@ -115,11 +116,11 @@
 				var delY = origin.y-position.y;
 
 				var delR2 = delX*delX + delY*delY;
-				var magF = 3/delR2;
+				var magF = 0.5/delR2;
 
 				return {
-					x: magF*delX,
-					y: magF*delY,
+					x: magF*-delX,
+					y: magF*-delY,
 				};
 			}
 			var canMove = false;

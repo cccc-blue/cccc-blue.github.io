@@ -1,193 +1,46 @@
 <html>
 	<head>
-		<link href="https://fonts.googleapis.com/css?family=Quicksand:300,500&display=swap" rel="stylesheet">
-		<style>
-			* {
-				--pantone:#62A8E5;
-				--light-purple:#8e88ff;
-				--off-white:#f9f7ff;
-			}
-			body {
-				font-family: "Quicksand", Helvetica, Arial, sans-serif;
-				background-color:var(--light-purple);
-				color:var(--off-white);
-				margin:0;
-				padding:1em 2em;
-			}
-			.container {
-				/*margin:1em;*/
-				/*padding:1em;*/
-				width:100%;
-				height:100%;
-				position:relative;
-			}
-			h1 {
-				/*background-color:var(--pantone);*/
-			}
-			.text-wrapper {
-				font-size:18pt;
-				display:flex;
-				flex-direction:column;
-				position:absolute;
-			}
-			.text-wrapper h1 {
-				margin:0;
-				padding:0;
-				font-weight:300;
-			}
-			.text-wrapper h1 b {
-				font-weight:500;
-			}
-			.header-wrapper {
-				top:0;
-				left:0;
-			}
-			.footer-wrapper {
-				bottom:0;
-				right:0;
-				text-align:right;
-			}
-			#canvas {
-				width:100%;
-				height:100%;
-				position:absolute;
-				top:0;
-				left:0;
-			}
-		</style>
+		<link href="https://fonts.googleapis.com/css?family=Quicksand:300,500,700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./css/font.css">
+		<link rel="stylesheet" href="./css/style.css">
 	</head>
 	<body>
 		<canvas id="canvas"></canvas>
 		<div class="container">
 			
 			<div class="header-wrapper text-wrapper">
-				<h1><b>c</b>olumbia</h1>
+				<div style="box-shadow:0 0 0 black"><h1><b>c</b>olumbia</h1></div>
 				<h1><b>c</b>reative</h1>
 				<h1><b>c</b>oders</h1>
 				<h1><b>c</b>lub</h1>
 			</div>
 
 			<div class="footer-wrapper text-wrapper">
-				<h1>about</h1>
-				<h1>contact</h1>
-				<h1>meetings</h1>
+				<h1><a href="#join">join</a></h1>
+				<h1><a href="#about">about</a></h1>
+				<h1><a href="#contact">contact</a></h1>
+				<h1><a href="#meetings">meetings</a></h1>
+			</div>
+
+			<div class="icon-wrapper text-wrapper">
+				<a href="https://www.facebook.com/Columbia-Creative-Coders-Club-111044726954590/"><span class="icon-facebook"></span></a>
+				<a href="https://github.com/cccc-blue"><span class="icon-github"></span></a>
+				<!--<span class="icon-instagram"></span>-->
+			</div>
+
+			<div class="content-wrapper">
+				<div class="content" id="about">
+					<h2>Who can join?</h2>
+					<p> Anybody! Whether you're an artist, musician, writer,or engineer, we want you in our community. We believe everyone has a creative vision to share.</p>
+					<h2>What do we do?</h2>
+					<p>We connect people from different backgroudns to build creative projects using technology. We'll have meetings every week where you can hang out with people with similar interests, talk about your projects, create teams to epxlore your ideas, and learn cool things from each other.</p>
+					<h2>When / where are our meetings?</h2>
+					<p>Sundays at 4pm. The room will usually be on Mudd 6th floor, but it is subject to change. Check our <a href="https://www.facebook.com/Columbia-Creative-Coders-Club-111044726954590/">Facebook page</a> to stay up-to-date with the latest meeting info.</p>
+					<h2>Cool!. Can I join your mailing list?</h2>
+					<p>Sure! Click the "join" link on the bottom-left.</p>
+				</div>
 			</div>
 		</div>
-		<script>
-			var canvas = document.getElementById("canvas");
-			var ctx = canvas.getContext("2d");
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-
-			var spacing = 70;
-
-			var xlen = canvas.width / spacing;
-			var ylen = canvas.height/ spacing;
-
-			var mouse = {x: 0, y:0};
-
-			var particles = [];
-
-			ctx.fillStyle="#f9f7ff";
-			// ctx.fillStyle="#bfc9e2";
-
-			for(var i=0; i<xlen; i++) {
-				for(var j=0; j<ylen; j++) {
-					particles.push({
-						p: {
-							x: i*spacing,
-							y: j*spacing,
-						},
-						v: {
-							x:0,
-							y:0,
-						},
-						a: {
-							x:0,
-							y:0,
-						},
-						r: 2+Math.random()*7,
-					});
-				}
-			}
-
-			function myField(origin, position) {
-				var delX = origin.x-position.x;
-				var delY = origin.y-position.y;
-
-				var delR2 = delX*delX + delY*delY;
-				var magF = 0.5/delR2;
-
-				return {
-					x: magF*-delX,
-					y: magF*-delY,
-				};
-			}
-			var canMove = false;
-			function loop() {
-				ctx.clearRect(0, 0, canvas.width, canvas.height);
-				for(var i=0; i<particles.length; i++) {
-					var myP = particles[i];
-					// var myForce = {fx:0, fy:0};
-					// for(var j=0; j<vectorFields.length; j++) {
-					// 	var thisForce = vectorFields[j](myP.p);
-
-					// 	myForce.fx += thisForce.fx;
-					// 	myForce.fy += thisForce.fy;
-					// }
-					var myForce = {x:0, y:0};
-					if(canMove) {
-						myForce = myField(mouse, myP.p);
-					}
-					var vel2 = Math.pow(myP.v.x, 2)+Math.pow(myP.v.y, 2);
-					// console.log(myForce);
-
-					// myP.v.x+=myForce.x - myP.v.x*vel2*0.1;
-					// myP.v.y+=myForce.y - myP.v.y*vel2*0.1;
-					var limiter = 100;
-					if(!(Math.pow(myForce.x, 2)<limiter*limiter)) {
-						myForce.x = limiter;
-					}
-					if(!(Math.pow(myForce.y, 2)<limiter*limiter)) {
-						myForce.y = limiter;
-					}
-
-
-					myP.v.x+=myForce.x;
-					myP.v.y+=myForce.y;
-
-					myP.p.x+=myP.v.x;
-					myP.p.y+=myP.v.y;
-
-					//check for wrapping
-					if(myP.p.x > canvas.width+10) {
-						myP.p.x = -10;
-					} else if(myP.p.x < -10) {
-						myP.p.x = canvas.width+10;
-					}
-
-					if(myP.p.y > canvas.height+10) {
-						myP.p.y = -10;
-					} else if(myP.p.y < -10) {
-						myP.p.y = canvas.height+10;
-					}
-
-					ctx.beginPath();
-					ctx.arc(myP.p.x, myP.p.y, myP.r, 0, 2*Math.PI);
-					ctx.fill();
-				}
-
-
-				window.requestAnimationFrame(loop);	
-			}
-			loop();
-
-			document.addEventListener("mousemove", function(event) {
-				canMove = true;
-				mouse.x = event.clientX;
-				mouse.y = event.clientY;
-			});
-			
-		</script>
+		<script src="./js/index.js"></script>
 	</body>
 </html>

@@ -185,4 +185,7 @@ h1 {
 		/*background:var(--light-purple);*/
 		width:100%;
 	}
+	.mc-field-group input {
+		width:150px;
+	}
 }

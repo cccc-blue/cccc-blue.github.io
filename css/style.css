@@ -101,6 +101,7 @@ h1 {
 	line-height:24pt;
 	/*padding:1em 2em;*/
 	/*background: #8e88ff;*/
+	background:var(--light-purple);
 	opacity:0;
 	/*display:none;*/
 	transition:opacity 0.2s;
@@ -170,4 +171,11 @@ h1 {
 	font-size:36pt;
 	cursor:pointer;
 	z-index:10;
+}
+
+@media only screen and (max-width: 600px) {
+	.wrapper-wrapper {
+		/*background:var(--light-purple);*/
+		width:100%;
+	}
 }

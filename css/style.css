@@ -91,7 +91,7 @@ h1 {
 	height:100%;
 	margin:0 auto;
 	position:relative;
-	overflow-y:scroll;
+	/*overflow-y:scroll;*/
 	/*z-index:-1;*/
 	pointer-events:none;
 }
@@ -99,7 +99,7 @@ h1 {
 	width:100%;
 	height:100%;
 	position:absolute;
-	/*overflow:scroll;*/
+	overflow-y:scroll;
 	color:var(--off-white);
 	font-size:16pt;
 	line-height:24pt;

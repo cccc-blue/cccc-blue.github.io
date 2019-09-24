@@ -84,30 +84,90 @@ h1 {
 	top:0;
 	left:0;
 }
-.content-wrapper {
+.wrapper-wrapper {
 	width:600px;
-	position:relative;
-	overflow:scroll;
 	height:100%;
 	margin:0 auto;
+	position:relative;
+	overflow-y:scroll;
+}
+.content-wrapper {
+	width:100%;
+	height:100%;
+	position:absolute;
+	/*overflow:scroll;*/
 	color:var(--off-white);
-	/*background:rgba(142, 136, 255, 1.0);*/
 	font-size:16pt;
 	line-height:24pt;
-	padding:1em 2em;
-	border-left:2px dashed var(--off-white);
-	border-right:2px dashed var(--off-white);
+	/*padding:1em 2em;*/
+	/*background: #8e88ff;*/
+	opacity:0;
+	/*display:none;*/
+	transition:opacity 0.2s;
 }
 .content-wrapper a{
 	color:var(--off-white);
 }
 .content {
-	padding-bottom:6em;
+	margin:0;
+	padding:1em 2em 2em 2em;
+	border-left:2px dashed var(--off-white);
+	border-right:2px dashed var(--off-white);
 }
-#about {
-	opacity:0;
-	transition:opacity 0.2s;
-}
-#about:target {
+.content-wrapper:target {
+	/*display:block;*/
 	opacity:1;
+}
+
+/* mailchimp styles */
+.signup-form {
+	width:100%;
+	/*background:red;*/
+	display:flex;
+	flex-direction:column;
+}
+.mc-field-group {
+	display:flex;
+	flex-direction:row;
+	justify-content: space-between;
+	margin-top:12pt;
+}
+.mc-field-group label {
+	
+}
+.mc-field-group input {
+	border:2px solid var(--off-white);
+	color:var(off-white);
+	background:none;
+	width:200px;
+	font-family: "Quicksand", Helvetica, Arial, sans-serif;
+	color:var(--off-white);
+	font-size:14pt;
+}
+.my-submit {
+	width:100%;
+}
+.my-submit .my-button {
+	width:200px;
+	margin: 12pt auto;
+	color:var(--light-purple);
+	background: var(--off-white);
+	border: 2px solid var(--off-white);
+	border-radius:10px;
+	text-align:center;
+	transition: all 0.2s;
+	cursor:pointer;
+}
+.my-submit .my-button:hover {
+	color:var(--off-white);
+	background:var(--light-purple);
+}
+.close-button {
+	position:absolute;
+	top:24pt;
+	right:24pt;
+	text-decoration: none;
+	font-size:36pt;
+	cursor:pointer;
+	z-index:10;
 }

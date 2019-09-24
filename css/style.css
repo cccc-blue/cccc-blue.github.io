@@ -28,6 +28,7 @@ h1 {
 	position:absolute;
 	margin:0;
 	padding:0;
+	z-index:0;
 }
 .text-wrapper h1 {
 	margin:0;
@@ -83,6 +84,7 @@ h1 {
 	position:absolute;
 	top:0;
 	left:0;
+	z-index:-2;
 }
 .wrapper-wrapper {
 	width:600px;
@@ -90,6 +92,8 @@ h1 {
 	margin:0 auto;
 	position:relative;
 	overflow-y:scroll;
+	/*z-index:-1;*/
+	pointer-events:none;
 }
 .content-wrapper {
 	width:100%;
@@ -103,20 +107,23 @@ h1 {
 	/*background: #8e88ff;*/
 	background:var(--light-purple);
 	opacity:0;
-	/*display:none;*/
+	display:none;
 	transition:opacity 0.2s;
+	z-index:2;
+	pointer-events:auto;
 }
 .content-wrapper a{
 	color:var(--off-white);
 }
 .content {
+	z-index:2;
 	margin:0;
 	padding:1em 2em 2em 2em;
 	border-left:2px dashed var(--off-white);
 	border-right:2px dashed var(--off-white);
 }
 .content-wrapper:target {
-	/*display:block;*/
+	display:block;
 	opacity:1;
 }
 
